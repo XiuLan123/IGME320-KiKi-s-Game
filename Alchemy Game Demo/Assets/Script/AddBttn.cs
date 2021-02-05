@@ -10,23 +10,11 @@ public class AddBttn : MonoBehaviour
     int baseY = 350;
     int baseX = 120;
     int count = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Click()
     {
         if (count >= 3)
         {
-
             return;
         }
         else
