@@ -1,5 +1,13 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/FlyingGame.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/Balance.unity
+=======
+- path: Assets/Scenes/minimenutest.unity
+>>>>>>> mike
+>>>>>>> ca5133e03c79980e6a293143b1be4dd96ee7978a
   isLoaded: 1
   isActive: 1
   isSubScene: 0
