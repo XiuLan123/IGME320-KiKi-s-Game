@@ -7,12 +7,12 @@ public class Player : MonoBehaviour
 {
     //player info
     public int health;
-    public Rect position;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        position = new Rect();
+        health = 3;
     }
 
     // Update is called once per frame
