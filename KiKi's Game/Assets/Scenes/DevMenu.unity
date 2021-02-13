@@ -289,7 +289,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: minimenutest
+          m_StringArgument: AlchemyGame
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &230581036
@@ -575,7 +575,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: minimenutest
+          m_StringArgument: FlyingGame
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1074187114
@@ -783,7 +783,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: minimenutest
+          m_StringArgument: RunnerMinigame
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1156235747
@@ -913,7 +913,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: minimenutest
+          m_StringArgument: Balance
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1317315986

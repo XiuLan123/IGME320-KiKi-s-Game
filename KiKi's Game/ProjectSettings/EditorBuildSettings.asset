@@ -11,4 +11,16 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Balance.unity
+    guid: da868f4b64edf5c41a1ad3d9f0d5bab2
+  - enabled: 1
+    path: Assets/Scenes/AlchemyGame.unity
+    guid: c35ecfc45732e8347ba4986d117231ea
+  - enabled: 1
+    path: Assets/Scenes/FlyingGame.unity
+    guid: 6c78673ccffbf284db095522e74f1a8e
+  - enabled: 1
+    path: Assets/Scenes/RunnerMinigame.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
