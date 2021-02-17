@@ -5,29 +5,48 @@ using UnityEngine.UI;
 
 public class MixBttn : MonoBehaviour
 {
-    Object potion;
-    public GameObject potionSlot;
     Craft craft;
+    GameObject[] potionList;
+    public GameObject potionSlot;
     public GameObject secondStage;
     public GameObject thirdStage;
+
+    int highRareityChance = 1;
 
     private void Start()
     {
         craft = Craft.instance;
+        potionList = Resources.LoadAll<GameObject>("Potions");
     }
 
     public void CreatePotion()
     {
-        if(craft.items.Count >=3)
+        if(craft.items.Count ==3)
         {
-            potion = Resources.Load("Potion");
-            GameObject potionGameObj = Instantiate(potion, potionSlot.transform) as GameObject;
-            potionGameObj.transform.position = new Vector3(1920 / 2 + 30, 900, 0);
+            RarityCheck();
+
+            if (Random.Range(highRareityChance,20) > 15)
+            {
+                GameObject potionGameObj = Instantiate(potionList[0], potionSlot.transform);
+                potionGameObj.transform.position = new Vector3(potionSlot.transform.position.x, potionSlot.transform.position.y, 0);
+            }
+            else if (Random.Range(highRareityChance, 20) > 10)
+            {
+                GameObject potionGameObj = Instantiate(potionList[1], potionSlot.transform);
+                potionGameObj.transform.position = new Vector3(potionSlot.transform.position.x, potionSlot.transform.position.y, 0);
+            }
+            else
+            {
+                GameObject potionGameObj = Instantiate(potionList[2], potionSlot.transform);
+                potionGameObj.transform.position = new Vector3(potionSlot.transform.position.x, potionSlot.transform.position.y, 0);
+            }
 
             for (int i = 0; i < 3; i++)
             {
                 craft.Remove(craft.items[0]);
             }
+
+            highRareityChance = 1;
         }
     }
 
@@ -35,5 +54,24 @@ public class MixBttn : MonoBehaviour
     {
         secondStage.SetActive(false);
         thirdStage.SetActive(true);
+    }
+
+    void RarityCheck()
+    {
+        for(int i = 0; i < craft.items.Count; i++)
+        {
+            if(craft.items[i].rarity == "SR")
+            {
+                highRareityChance += 5;
+            }
+            else if(craft.items[i].rarity == "R")
+            {
+                highRareityChance += 3;
+            }
+            else
+            {
+                highRareityChance += 1;
+            }
+        }
     }
 }

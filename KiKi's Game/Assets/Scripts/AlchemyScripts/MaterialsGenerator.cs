@@ -4,38 +4,61 @@ using UnityEngine;
 
 public class MaterialsGenerator : MonoBehaviour
 {
-    List<string> materialsStringList = new List<string>();
     List<GameObject> materialsList = new List<GameObject>();
 
-    Object material;
+    GameObject[] NMaterialList;
+    GameObject[] RMaterialList;
+    GameObject[] SRMaterialList;
+
+    int rerollCounter = 0;
+
     public GameObject firstStage;
+    public GameObject rerollBttn;
 
     // Start is called before the first frame update
     void Start()
     {
-        materialsStringList.Add("Frog");
-        materialsStringList.Add("Butterfly");
-        materialsStringList.Add("Feather");
-        materialsStringList.Add("MagicCrystal");
-        materialsStringList.Add("Lavender");
-        materialsStringList.Add("Rose");
-
+        NMaterialList = Resources.LoadAll<GameObject>("Materials/N");
+        RMaterialList = Resources.LoadAll<GameObject>("Materials/R");
+        SRMaterialList = Resources.LoadAll<GameObject>("Materials/SR");
         GenerateMaterials();
     }
 
     public void Reroll()
     {
-        foreach(GameObject materials in materialsList)
+
+        foreach (GameObject materials in materialsList)
         {
             Destroy(materials);
         }
 
         for (int i = 0; i < 3; i++)
         {
-            material = Resources.Load(materialsStringList[Random.Range(0, materialsStringList.Count)]);
-            GameObject materialGame = Instantiate(material, firstStage.transform) as GameObject;
-            materialGame.transform.position = new Vector3(400 + 560 * i, 650, 0);
-            materialsList.Add(materialGame);
+            if (Random.Range(0, 10) == 5)
+            {
+                GameObject materialGame = Instantiate(SRMaterialList[Random.Range(0, SRMaterialList.Length)], firstStage.transform);
+                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialsList.Add(materialGame);
+            }
+            else if (Random.Range(0, 5) == 3)
+            {
+                GameObject materialGame = Instantiate(RMaterialList[Random.Range(0, RMaterialList.Length)], firstStage.transform);
+                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialsList.Add(materialGame);
+            }
+            else
+            {
+                GameObject materialGame = Instantiate(NMaterialList[Random.Range(0, NMaterialList.Length)], firstStage.transform);
+                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialsList.Add(materialGame);
+            }
+        }
+
+        rerollCounter++;
+
+        if (rerollCounter == 3)
+        {
+            rerollBttn.SetActive(false);
         }
     }
 
@@ -43,10 +66,24 @@ public class MaterialsGenerator : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            material = Resources.Load(materialsStringList[Random.Range(0, materialsStringList.Count)]);
-            GameObject materialGame = Instantiate(material, firstStage.transform) as GameObject;
-            materialGame.transform.position = new Vector3(400 + 560 * i, 650, 0);
-            materialsList.Add(materialGame);
+            if(Random.Range(0,10) == 5)
+            {
+                GameObject materialGame = Instantiate(SRMaterialList[Random.Range(0, SRMaterialList.Length)], firstStage.transform);
+                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialsList.Add(materialGame);
+            }
+            else if (Random.Range(0, 5) == 3)
+            {
+                GameObject materialGame = Instantiate(RMaterialList[Random.Range(0, RMaterialList.Length)], firstStage.transform);
+                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialsList.Add(materialGame);
+            }
+            else
+            {
+                GameObject materialGame = Instantiate(NMaterialList[Random.Range(0, NMaterialList.Length)], firstStage.transform);
+                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialsList.Add(materialGame);
+            }
         }
     }
 }
