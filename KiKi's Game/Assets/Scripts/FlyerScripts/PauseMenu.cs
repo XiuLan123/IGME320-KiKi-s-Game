@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -21,11 +22,16 @@ public class PauseMenu : MonoBehaviour
             manager.isPaused = true;
             pauseScreen.SetActive(true);
         }
-    }
 
-    void UnpauseButton()
-    {
-        manager.isPaused = false;
-        pauseScreen.SetActive(false);
+        if (manager.isPaused && Input.GetKeyDown(KeyCode.P))
+        {
+            manager.isPaused = false;
+            pauseScreen.SetActive(false);
+        }
+
+        if(manager.isPaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

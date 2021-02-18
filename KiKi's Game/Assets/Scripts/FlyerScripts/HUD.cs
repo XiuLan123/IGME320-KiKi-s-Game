@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour
 {
@@ -40,6 +41,11 @@ public class HUD : MonoBehaviour
         if(manager.kiki.health <= 0)
         {
             heart1.SetActive(false);
+        }
+
+        if(manager.gameoverScreen.activeSelf && Input.anyKeyDown)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
