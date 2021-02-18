@@ -17,3 +17,4 @@ MonoBehaviour:
   rarity: SR
   type: Potion
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  color: {r: 0.49803922, g: 0.003921569, b: 1, a: 1}

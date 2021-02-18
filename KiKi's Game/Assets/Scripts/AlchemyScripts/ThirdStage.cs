@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ThirdStage : MonoBehaviour
 {
@@ -20,7 +21,10 @@ public class ThirdStage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!questOneBttn.activeSelf && !questTwoBttn.activeSelf && !questThreeBttn.activeSelf)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void NextStage()
@@ -56,7 +60,7 @@ public class ThirdStage : MonoBehaviour
             Inventory.instance.items.Remove(removeOne);
             Inventory.instance.items.Remove(removeTwo);
             Inventory.instance.items.Remove(removeThree);
-            questThreeBttn.SetActive(false);
+            questOneBttn.SetActive(false);
         }
     }
 
@@ -82,7 +86,7 @@ public class ThirdStage : MonoBehaviour
         {
             Inventory.instance.items.Remove(removeOne);
             Inventory.instance.items.Remove(removeTwo);
-            questThreeBttn.SetActive(false);
+            questTwoBttn.SetActive(false);
         }
     }
 

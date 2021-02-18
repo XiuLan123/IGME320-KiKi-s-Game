@@ -10,4 +10,13 @@ public class Item : ScriptableObject
     public string rarity = "none";
     public string type = "none";
     public Sprite icon = null;
+    public Color color = new Color();
+
+    public Item(int price, string rarity, string type)
+    {
+        this.price = price;
+        this.rarity = rarity;
+        this.type = type;
+        this.color = new Color(255, 255, 255, 1);
+    }
 }

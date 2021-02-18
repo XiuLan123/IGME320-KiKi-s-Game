@@ -12,6 +12,8 @@ public class CraftSlot : MonoBehaviour
     {
         item = newItem;
 
+        icon.color = item.color;
+
         icon.sprite = item.icon;
         icon.enabled = true;
     }
@@ -20,7 +22,15 @@ public class CraftSlot : MonoBehaviour
     {
         item = null;
 
+        icon.color = new Color();
+
         icon.sprite = null;
         icon.enabled = false;
+    }
+
+    public void SendItem()
+    {
+        Inventory.instance.Add(item);
+        Craft.instance.Remove(item);
     }
 }
