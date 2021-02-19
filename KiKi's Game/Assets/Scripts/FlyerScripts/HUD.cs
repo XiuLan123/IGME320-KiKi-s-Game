@@ -43,10 +43,10 @@ public class HUD : MonoBehaviour
             heart1.SetActive(false);
         }
 
-        if(manager.gameoverScreen.activeSelf && Input.anyKeyDown)
-        {
-            SceneManager.LoadScene(0);
-        }
+        //if(manager.gameoverScreen.activeSelf && Input.anyKeyDown)
+        //{
+        //    SceneManager.LoadScene(0);
+        //}
     }
 
     public void CheckPlay()

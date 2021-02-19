@@ -15,7 +15,7 @@ public class Manager : MonoBehaviour
     public GameObject cloud2Prefab; //prefab for cloud2 enemy
     public List<GameObject> enemies; //list for enemies
     public GameObject gameoverScreen; //game over screen
-    public GameObject screen; //screen for pausing i think
+    //public GameObject screen; //screen for pausing i think
     public float timer; //timer for game win
     public float invincibleTime; //time for kiki invincibility
     public bool isInvincible; //bool for invincible
@@ -36,10 +36,18 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(UnityEngine.Random.Range(0f, 100f) < .5)
+        {
+            InstantiateEnemy();
+        }
+
+        ScreenStuff();
+
+
         if (!isPaused)
         {
             Movement();
-            for(int i = 0; i <= 0; i++)
+            for(int i = 0; i < enemies.Count; i++)
             {
                 MoveEnemy(enemies[i]);
             }
@@ -49,7 +57,7 @@ public class Manager : MonoBehaviour
             {
                 if (kiki.health <= 0)
                 {
-                    gameoverScreen.SetActive(true);
+                    //gameoverScreen.SetActive(true);
                 }
             }
             if (timer <= 0)
@@ -119,6 +127,7 @@ public class Manager : MonoBehaviour
             for(int i = 0; i < enemies.Count; i++)
             {
                 Collider2D b = enemies[i].GetComponent<BoxCollider2D>();
+<<<<<<< Updated upstream
             }
 
 
@@ -126,6 +135,13 @@ public class Manager : MonoBehaviour
             //{
             //    return true;
             //}
+=======
+                if (k.bounds.Intersects(b.bounds))
+                {
+                    return true;
+                }
+            }
+>>>>>>> Stashed changes
         }
 
         return false;
@@ -142,11 +158,63 @@ public class Manager : MonoBehaviour
     }
 
 
+
+    /// <summary>
+    /// Method that holds instantiating enemies into the enemy list
+    /// </summary>
     public void InstantiateEnemy()
     {
-        enemies.Add(GameObject.Instantiate(birdPrefab, new Vector3(UnityEngine.Random.Range(-5, 5), 6), Quaternion.identity));
-        enemies.Add(GameObject.Instantiate(treePrefab, new Vector3(UnityEngine.Random.Range(-5, 5), 6), Quaternion.identity));
-        enemies.Add(GameObject.Instantiate(cloudPrefab, new Vector3(UnityEngine.Random.Range(-5, 5), 6), Quaternion.identity));
-        enemies.Add(GameObject.Instantiate(cloud2Prefab, new Vector3(UnityEngine.Random.Range(-5, 5), 6), Quaternion.identity));
+        switch(UnityEngine.Random.Range(1,5))
+        {
+            case 1:
+                enemies.Add(GameObject.Instantiate(birdPrefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
+                break;
+            case 2:
+                enemies.Add(GameObject.Instantiate(treePrefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
+                break;
+            case 3:
+                enemies.Add(GameObject.Instantiate(cloudPrefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
+                break;
+            case 4:
+                enemies.Add(GameObject.Instantiate(cloud2Prefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
+                break;
+        } 
+    }
+
+
+    /// <summary>
+    /// Method that holds information about screen wrapping and enemy despwaning
+    /// </summary>
+    public void ScreenStuff()
+    {
+        if (kiki.gameObject.transform.position.y > 4.0)
+        {
+            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x, 4.0f);
+        }
+
+        if (kiki.gameObject.transform.position.y < -4.0)
+        {
+            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x, -4.0f);
+        }
+
+        if (kiki.gameObject.transform.position.x > 10.0)
+        {
+            kiki.gameObject.transform.position = new Vector3(-10, kiki.gameObject.transform.position.y);
+        }
+
+        if (kiki.gameObject.transform.position.x < -10.0)
+        {
+            kiki.gameObject.transform.position = new Vector3(10, kiki.gameObject.transform.position.y);
+        }
+
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            if(enemies[i].transform.position.y < -4.5)
+            {
+                GameObject temp = enemies[i];
+                enemies.Remove(temp);
+                Destroy(temp);
+            }
+        }
     }
 }
