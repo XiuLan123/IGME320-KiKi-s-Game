@@ -6,8 +6,8 @@ public class PlayerControl : MonoBehaviour
 {
     float maxHeight = 3;
     float minHeight = 0;
-    public float raiseSpeed = 0.03f;
-    public float lowerSpeed = 0.03f;
+    float raiseSpeed = 2.5f;
+    float lowerSpeed = 2.5f;
     public Transform ropeConnectorR;
     public Transform ropeConnectorL;
 
@@ -25,7 +25,7 @@ public class PlayerControl : MonoBehaviour
         {
             if(ropeConnectorR.localPosition.y < maxHeight)
             {
-                ropeConnectorR.localPosition += new Vector3(0, raiseSpeed, 0);
+                ropeConnectorR.localPosition += new Vector3(0,  Time.deltaTime * raiseSpeed, 0);
             }
             else
             {
@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour
         }
         else if(ropeConnectorR.localPosition.y > minHeight)
         {
-            ropeConnectorR.localPosition -= new Vector3(0, lowerSpeed, 0);
+            ropeConnectorR.localPosition -= new Vector3(0, Time.deltaTime * lowerSpeed, 0);
             if(ropeConnectorR.localPosition.y < minHeight)
             {
                 ropeConnectorR.localPosition = new Vector3(ropeConnectorR.localPosition.x, minHeight, ropeConnectorR.localPosition.z);
@@ -46,7 +46,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (ropeConnectorL.localPosition.y < maxHeight)
             {
-                ropeConnectorL.localPosition += new Vector3(0, raiseSpeed, 0);
+                ropeConnectorL.localPosition += new Vector3(0, Time.deltaTime * raiseSpeed, 0);
             }
             else
             {
@@ -55,7 +55,7 @@ public class PlayerControl : MonoBehaviour
         }
         else if (ropeConnectorL.localPosition.y > minHeight)
         {
-            ropeConnectorL.localPosition -= new Vector3(0, lowerSpeed, 0);
+            ropeConnectorL.localPosition -= new Vector3(0, Time.deltaTime * lowerSpeed, 0);
             if (ropeConnectorL.localPosition.y <= minHeight)
             {
                 ropeConnectorL.localPosition = new Vector3(ropeConnectorL.localPosition.x, minHeight, ropeConnectorL.localPosition.z);

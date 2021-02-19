@@ -44,9 +44,10 @@ public class GameController : MonoBehaviour
                 gameplayObjects.SetActive(false);
                 yield break;
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+
+            if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                ExitToMain();
+                gameplayUI.transform.GetChild(1).gameObject.SetActive(false);
             }
             yield return null;
         }
