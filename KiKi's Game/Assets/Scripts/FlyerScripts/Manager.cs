@@ -128,6 +128,7 @@ public class Manager : MonoBehaviour
             {
                 Collider2D b = enemies[i].GetComponent<BoxCollider2D>();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             }
 
 
@@ -136,6 +137,8 @@ public class Manager : MonoBehaviour
             //    return true;
             //}
 =======
+=======
+>>>>>>> Stashed changes
                 if (k.bounds.Intersects(b.bounds))
                 {
                     return true;
