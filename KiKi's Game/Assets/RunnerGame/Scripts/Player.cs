@@ -2,32 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace RunnerGame
 {
-    public const int MAX_HP = 100;
-    public int currentHP = 100;
-
-    public HealthBar healthBar;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Player : MonoBehaviour
     {
-        currentHP = MAX_HP;
-        healthBar.SetMaxHealth(MAX_HP);
-    }
+        public const int MAX_HP = 100;
+        public float currentHP = 100;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        public HealthBar healthBar;
+        public GameManager gm;
+        private static Player m_instance;
+        // Start is called before the first frame update
+        void Start()
         {
-            TakeDamage(20);
+            currentHP = MAX_HP;
+            healthBar.SetMaxHealth(MAX_HP);
+            m_instance = this;
         }
-    }
 
-    void TakeDamage(int damage)
-    {
-        currentHP -= damage;
-        healthBar.SetHealth(currentHP);
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TakeDamage(20f);
+            }
+        }
+
+
+
+        public static void TakeDamage(float damage)
+        {
+            m_instance.currentHP -= damage;
+            if (m_instance.currentHP > 100)
+                m_instance.currentHP = 100;
+            m_instance.healthBar.SetHealth(m_instance.currentHP);
+            if (m_instance.currentHP <= 0)
+            {
+                m_instance.gm.GameOver();
+            }
+        }
+
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Pickup")
+            {
+                gm.AddScore(5);
+                TakeDamage(-5);
+            }
+            else
+                TakeDamage(10);
+        }
     }
 }

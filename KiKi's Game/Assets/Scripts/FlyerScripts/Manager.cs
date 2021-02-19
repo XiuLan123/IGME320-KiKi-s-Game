@@ -122,10 +122,10 @@ public class Manager : MonoBehaviour
             }
 
 
-            if (k.bounds.Intersects(b.bounds))
-            {
-                return true;
-            }
+            //if (k.bounds.Intersects(b.bounds))
+            //{
+            //    return true;
+            //}
         }
 
         return false;
