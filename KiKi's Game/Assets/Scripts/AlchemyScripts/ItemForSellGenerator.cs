@@ -33,13 +33,13 @@ public class ItemForSellGenerator : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            if (Random.Range(0, 10) == 5)
+            if (Random.Range(0, 20) == 10)
             {
                 GameObject materialGame = Instantiate(SRMaterialList[Random.Range(0, SRMaterialList.Length)], slots[i].transform);
                 materialGame.transform.position = slots[i].transform.position;
                 materialsList.Add(materialGame);
             }
-            else if (Random.Range(0, 5) == 3)
+            else if (Random.Range(0, 10) == 5)
             {
                 GameObject materialGame = Instantiate(RMaterialList[Random.Range(0, RMaterialList.Length)], slots[i].transform);
                 materialGame.transform.position = slots[i].transform.position;

@@ -25,12 +25,12 @@ public class MixBttn : MonoBehaviour
         {
             RarityCheck();
 
-            if (Random.Range(highRareityChance,20) > 15)
+            if (Random.Range(highRareityChance,30) > 25)
             {
                 GameObject potionGameObj = Instantiate(potionList[0], potionSlot.transform);
                 potionGameObj.transform.position = new Vector3(potionSlot.transform.position.x, potionSlot.transform.position.y, 0);
             }
-            else if (Random.Range(highRareityChance, 20) > 10)
+            else if (Random.Range(highRareityChance, 25) > 15)
             {
                 GameObject potionGameObj = Instantiate(potionList[1], potionSlot.transform);
                 potionGameObj.transform.position = new Vector3(potionSlot.transform.position.x, potionSlot.transform.position.y, 0);
@@ -62,11 +62,11 @@ public class MixBttn : MonoBehaviour
         {
             if(craft.items[i].rarity == "SR")
             {
-                highRareityChance += 5;
+                highRareityChance += 7;
             }
             else if(craft.items[i].rarity == "R")
             {
-                highRareityChance += 3;
+                highRareityChance += 4;
             }
             else
             {

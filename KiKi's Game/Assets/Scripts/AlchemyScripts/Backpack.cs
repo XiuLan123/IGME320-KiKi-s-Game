@@ -16,9 +16,13 @@ public class Backpack : MonoBehaviour
     public delegate void OnGoldChanged();
     public OnGoldChanged onGoldChangedCallback;
     int count;
+    public GameObject winPanel;
+    public GameObject losePanel;
 
     void Start()
     {
+        winPanel.SetActive(false);
+        losePanel.SetActive(false);
         onGoldChangedCallback += UpdateGold;
         UpdateGold();
     }
