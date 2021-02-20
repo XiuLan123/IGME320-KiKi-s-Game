@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         encounterTimer = Random.Range(3f,6f);
-        EncounterMinigame(Random.Range(0,4), RandomPosOnScreen());
+        Time.timeScale = 0f;
     }
 
     private void Update()
@@ -42,16 +42,8 @@ public class MainMenu : MonoBehaviour
                 playerPress = true;
                 introMessage.SetActive(false);
                 mainMessage.SetActive(true);
+                Time.timeScale = 1f;
             }
-        }
-        if(encounterTimer <= 0)
-        {
-            EncounterMinigame(Random.Range(0, 4), RandomPosOnScreen());
-            encounterTimer = Random.Range(3f, 6f);
-        }
-        else
-        {
-            encounterTimer -= Time.deltaTime;
         }
     }
 
