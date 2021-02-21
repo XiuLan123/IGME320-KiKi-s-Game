@@ -1273,12 +1273,12 @@ PrefabInstance:
     - target: {fileID: 206533474600630506, guid: ee45ce1dc8583354d9f7ef6dbc7018de,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 206533474600630506, guid: ee45ce1dc8583354d9f7ef6dbc7018de,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 206533474600630506, guid: ee45ce1dc8583354d9f7ef6dbc7018de,
         type: 3}
@@ -1319,6 +1319,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793474714837565478, guid: ee45ce1dc8583354d9f7ef6dbc7018de,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793474714837565478, guid: ee45ce1dc8583354d9f7ef6dbc7018de,
+        type: 3}
+      propertyPath: m_ShadowRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533512052139045203, guid: ee45ce1dc8583354d9f7ef6dbc7018de,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee45ce1dc8583354d9f7ef6dbc7018de, type: 3}

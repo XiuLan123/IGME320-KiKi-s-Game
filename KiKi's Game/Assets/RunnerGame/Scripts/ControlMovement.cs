@@ -22,11 +22,11 @@ namespace RunnerGame
         {
             Vector3 curPos = gameObject.transform.position;
 
-            if (Input.GetKeyDown(moveL) || Input.GetKeyDown(moveL_alt) && curPos.x > -1)
+            if ((Input.GetKeyDown(moveL) || Input.GetKeyDown(moveL_alt)) && curPos.x > -1)
             {
                 gameObject.transform.position = Vector3.MoveTowards(curPos, curPos - new Vector3(1, 0, 0), 1);
             }
-            if (Input.GetKeyDown(moveR) || Input.GetKeyDown(moveR_alt) && curPos.x < 1)
+            if ((Input.GetKeyDown(moveR) || Input.GetKeyDown(moveR_alt)) && curPos.x < 1)
             {
                 gameObject.transform.position = Vector3.MoveTowards(curPos, curPos + new Vector3(1, 0, 0), 1);
             }
