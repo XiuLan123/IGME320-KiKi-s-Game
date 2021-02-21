@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -32,6 +33,23 @@ public class MainMenu : MonoBehaviour
             {
                 encounterTimer -= Time.deltaTime;
             }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                SceneManager.LoadScene(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                SceneManager.LoadScene(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                SceneManager.LoadScene(3);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                SceneManager.LoadScene(4);
+            }
         }
         else
         {
@@ -47,8 +65,7 @@ public class MainMenu : MonoBehaviour
     {
         GameObject newEncounter = Instantiate(miniGameChoices[gameIndex], position, Quaternion.identity);
     }
-    
-    
+
     Vector3 RandomPosOnScreen()
     {
         float height = Camera.main.orthographicSize * 2;
