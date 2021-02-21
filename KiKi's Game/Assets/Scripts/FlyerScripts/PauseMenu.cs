@@ -29,9 +29,9 @@ public class PauseMenu : MonoBehaviour
             pauseScreen.SetActive(false);
         }
 
-        //if(manager.isPaused && Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    SceneManager.LoadScene(0);
-        //}
+        if(pauseScreen.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

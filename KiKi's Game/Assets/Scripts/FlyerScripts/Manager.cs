@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class Manager : MonoBehaviour
@@ -74,6 +75,7 @@ public class Manager : MonoBehaviour
                 if (kiki.health <= 0)
                 {
                     gameoverScreen.SetActive(true);
+                    StartCoroutine(LoadMainWait(1f));
                 }
 
                 if(kiki.health > 0 && timer <= 0)
@@ -102,7 +104,15 @@ public class Manager : MonoBehaviour
 
     }
 
-
+    IEnumerator LoadMainWait(float delay)
+    {
+        while(delay >= 0)
+        {
+            delay -= Time.deltaTime;
+            yield return null;
+        }
+        SceneManager.LoadScene(0);
+    }
 
     /// <summary>
     /// Movement code for kiki
@@ -185,16 +195,16 @@ public class Manager : MonoBehaviour
         switch(UnityEngine.Random.Range(1,5))
         {
             case 1:
-                enemies.Add(GameObject.Instantiate(birdPrefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
+                enemies.Add(Instantiate(birdPrefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
                 break;
             case 2:
-                enemies.Add(GameObject.Instantiate(treePrefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
+                enemies.Add(Instantiate(treePrefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
                 break;
             case 3:
-                enemies.Add(GameObject.Instantiate(cloudPrefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
+                enemies.Add(Instantiate(cloudPrefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
                 break;
             case 4:
-                enemies.Add(GameObject.Instantiate(cloud2Prefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
+                enemies.Add(Instantiate(cloud2Prefab, new Vector3(UnityEngine.Random.Range(-7, 7), 6), Quaternion.identity));
                 break;
         } 
     }
