@@ -27,7 +27,7 @@ public class MixBttn : MonoBehaviour
 
             if (Random.Range(highRareityChance,30) > 25)
             {
-                GameObject potionGameObj = Instantiate(potionList[0], potionSlot.transform);
+                GameObject potionGameObj = Instantiate(potionList[2], potionSlot.transform);
                 potionGameObj.transform.position = new Vector3(potionSlot.transform.position.x, potionSlot.transform.position.y, 0);
             }
             else if (Random.Range(highRareityChance, 25) > 15)
@@ -37,7 +37,7 @@ public class MixBttn : MonoBehaviour
             }
             else
             {
-                GameObject potionGameObj = Instantiate(potionList[2], potionSlot.transform);
+                GameObject potionGameObj = Instantiate(potionList[0], potionSlot.transform);
                 potionGameObj.transform.position = new Vector3(potionSlot.transform.position.x, potionSlot.transform.position.y, 0);
             }
 
