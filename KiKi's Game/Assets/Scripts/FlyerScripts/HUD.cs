@@ -49,6 +49,10 @@ public class HUD : MonoBehaviour
         //}
     }
 
+
+    /// <summary>
+    /// Checks if the player has started the game
+    /// </summary>
     public void CheckPlay()
     {
         if (Input.anyKeyDown)
@@ -57,6 +61,5 @@ public class HUD : MonoBehaviour
             play = true;
             manager.isPaused = false;
         }
-
     }
 }

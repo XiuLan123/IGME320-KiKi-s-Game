@@ -7,16 +7,21 @@ using System;
 public class Manager : MonoBehaviour
 {
     public FlyerPlayer kiki; //player
-    //public GameObject broom;
+
     public GameObject background; //background
+
     public GameObject birdPrefab; //prefab for bird enemy
     public GameObject treePrefab; //prefab for tree enemy
     public GameObject cloudPrefab; //prefab for cloud1 enemy
     public GameObject cloud2Prefab; //prefab for cloud2 enemy
     public List<GameObject> enemies; //list for enemies
+
     public GameObject gameoverScreen; //game over screen
+    public GameObject winScreen;
+    public Text countdown;
     //public GameObject screen; //screen for pausing i think
     public float timer; //timer for game win
+
     public float invincibleTime; //time for kiki invincibility
     public bool isInvincible; //bool for invincible
     public bool isPaused; //bool for if the game is paused
@@ -26,49 +31,68 @@ public class Manager : MonoBehaviour
     {
         //kiki.health = 3;
         timer = 60f;
+        countdown.text = "Time Left: " + timer; 
         isPaused = false;
         isInvincible = false;
         enemies = new List<GameObject>();
+        winScreen.SetActive(false);
+        gameoverScreen.SetActive(false);
         //background.transform() //need the background to be reset to the original position
         //gameobject.instantiate(vector 3, object, quatornian.identity (4D vector))
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if(UnityEngine.Random.Range(0f, 100f) < .5)
+    { 
+        
+        //if the game isnt paused
+        if (!isPaused && !gameoverScreen.activeSelf && !winScreen.activeSelf)
         {
-            InstantiateEnemy();
-        }
-
-        ScreenStuff();
 
 
-        if (!isPaused)
-        {
+            //instantiate enemies
+            if (UnityEngine.Random.Range(0f, 100f) < .5)
+            {
+                InstantiateEnemy();
+            }
+
+            //screenstuff method
+            ScreenStuff();
+
+            //movement method
             Movement();
+
+            //move the enemies
             for(int i = 0; i < enemies.Count; i++)
             {
                 MoveEnemy(enemies[i]);
             }
             
-            timer -= Time.deltaTime;
+
             if (kiki != null)
             {
                 if (kiki.health <= 0)
                 {
-                    //gameoverScreen.SetActive(true);
+                    gameoverScreen.SetActive(true);
+                }
+
+                if(kiki.health > 0 && timer <= 0)
+                {
+                    winScreen.SetActive(true);
                 }
             }
-            if (timer <= 0)
-            {
-                //win code
-            }
+
+            //count down the timer
+            timer -= Time.deltaTime;
+            countdown.text = "Time Left: " + (int)timer;
         }
 
+
+        //timing to keep kiki invincible
         if (invincibleTime > 0 && isInvincible)
         {
             invincibleTime -= Time.deltaTime;
+
         }
         else if(invincibleTime <= 0)
         {
@@ -85,6 +109,7 @@ public class Manager : MonoBehaviour
     /// </summary>
     void Movement()
     {
+        //input for wasd and arrow controls
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x, kiki.gameObject.transform.position.y + .05f);
@@ -102,6 +127,8 @@ public class Manager : MonoBehaviour
             kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x + .05f, kiki.gameObject.transform.position.y);
         }
 
+
+        //check collide for kiki and enemies
         if (CheckCollide())
         {
             kiki.health--;
@@ -198,6 +225,8 @@ public class Manager : MonoBehaviour
             kiki.gameObject.transform.position = new Vector3(10, kiki.gameObject.transform.position.y);
         }
 
+
+        //remove enemies after they pass the lower bounds of the screen
         for(int i = 0; i < enemies.Count; i++)
         {
             if(enemies[i].transform.position.y < -4.5)
