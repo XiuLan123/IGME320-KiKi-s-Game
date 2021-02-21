@@ -15,12 +15,21 @@ public class MaterialsGenerator : MonoBehaviour
     public GameObject firstStage;
     public GameObject rerollBttn;
 
+    public GameObject slotOne;
+    public GameObject slotTwo;
+    public GameObject slotThree;
+
+    GameObject[] slots = new GameObject[3];
+
     // Start is called before the first frame update
     void Start()
     {
         NMaterialList = Resources.LoadAll<GameObject>("Materials/N");
         RMaterialList = Resources.LoadAll<GameObject>("Materials/R");
         SRMaterialList = Resources.LoadAll<GameObject>("Materials/SR");
+        slots[0] = slotOne;
+        slots[1] = slotTwo;
+        slots[2] = slotThree;
         GenerateMaterials();
     }
 
@@ -37,19 +46,19 @@ public class MaterialsGenerator : MonoBehaviour
             if (Random.Range(0, 20) == 10)
             {
                 GameObject materialGame = Instantiate(SRMaterialList[Random.Range(0, SRMaterialList.Length)], firstStage.transform);
-                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialGame.transform.position = slots[i].transform.position;
                 materialsList.Add(materialGame);
             }
             else if (Random.Range(0, 10) == 5)
             {
                 GameObject materialGame = Instantiate(RMaterialList[Random.Range(0, RMaterialList.Length)], firstStage.transform);
-                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialGame.transform.position = slots[i].transform.position;
                 materialsList.Add(materialGame);
             }
             else
             {
                 GameObject materialGame = Instantiate(NMaterialList[Random.Range(0, NMaterialList.Length)], firstStage.transform);
-                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialGame.transform.position = slots[i].transform.position;
                 materialsList.Add(materialGame);
             }
         }
@@ -72,19 +81,19 @@ public class MaterialsGenerator : MonoBehaviour
             if(Random.Range(0,20) == 10)
             {
                 GameObject materialGame = Instantiate(SRMaterialList[Random.Range(0, SRMaterialList.Length)], firstStage.transform);
-                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialGame.transform.position = slots[i].transform.position;
                 materialsList.Add(materialGame);
             }
             else if (Random.Range(0, 10) == 5)
             {
                 GameObject materialGame = Instantiate(RMaterialList[Random.Range(0, RMaterialList.Length)], firstStage.transform);
-                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialGame.transform.position = slots[i].transform.position;
                 materialsList.Add(materialGame);
             }
             else
             {
                 GameObject materialGame = Instantiate(NMaterialList[Random.Range(0, NMaterialList.Length)], firstStage.transform);
-                materialGame.transform.position = new Vector3(firstStage.transform.position.x / 4 + 300 * i, firstStage.transform.position.y + 100, 0);
+                materialGame.transform.position = slots[i].transform.position;
                 materialsList.Add(materialGame);
             }
         }

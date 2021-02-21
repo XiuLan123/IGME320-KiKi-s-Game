@@ -80,7 +80,7 @@ public class Backpack : MonoBehaviour
                 {
                     if (ChangeGold(clickedObejct.GetComponent<PickUpItem>().item.price, false))
                     {
-                        clickedObejct.GetComponent<PickUpItem>().PickUp();
+                        clickedObejct.GetComponent<PickUpItem>().PickUp();            
                         Destroy(clickedObejct);
                     }
                 }
