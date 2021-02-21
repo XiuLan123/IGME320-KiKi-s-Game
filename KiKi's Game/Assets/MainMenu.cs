@@ -11,19 +11,17 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     Transform origin;
 
-    bool playerPress = false;
     public GameObject introMessage;
     public GameObject mainMessage;
 
     private void Start()
     {
         encounterTimer = Random.Range(3f,6f);
-        Time.timeScale = 0f;
     }
 
     private void Update()
     {
-        if (playerPress)
+        if (!introMessage.activeSelf)
         {
             if (encounterTimer <= 0)
             {
@@ -37,12 +35,10 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.anyKeyDown)
             {
-                playerPress = true;
                 introMessage.SetActive(false);
                 mainMessage.SetActive(true);
-                Time.timeScale = 1f;
             }
         }
     }
