@@ -10,10 +10,12 @@ public class HelpBtn : MonoBehaviour
     public void Click()
     {
         jijiinfo.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void ExitBtnClick()
     {
         jijiinfo.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
