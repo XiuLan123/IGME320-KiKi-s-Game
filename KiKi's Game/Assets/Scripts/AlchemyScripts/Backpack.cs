@@ -125,6 +125,6 @@ public class Backpack : MonoBehaviour
 
     public void UpdateGold()
     {
-        goldLabel.text = "Gold: " + gold.ToString();
+        goldLabel.text = ": " + gold.ToString();
     }
 }
