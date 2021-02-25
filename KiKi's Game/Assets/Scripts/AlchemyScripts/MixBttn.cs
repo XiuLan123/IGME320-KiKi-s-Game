@@ -10,6 +10,8 @@ public class MixBttn : MonoBehaviour
     public GameObject potionSlot;
     public GameObject secondStage;
     public GameObject thirdStage;
+    public GameObject backPack;
+    Backpack backPackScript;
 
     int highRareityChance = 1;
 
@@ -17,6 +19,7 @@ public class MixBttn : MonoBehaviour
     {
         craft = Craft.instance;
         potionList = Resources.LoadAll<GameObject>("Potions");
+        backPackScript = backPack.GetComponent<Backpack>();
     }
 
     public void CreatePotion()
@@ -47,6 +50,8 @@ public class MixBttn : MonoBehaviour
             }
 
             highRareityChance = 1;
+
+            backPackScript.secondStageCounter = 0;
         }
     }
 

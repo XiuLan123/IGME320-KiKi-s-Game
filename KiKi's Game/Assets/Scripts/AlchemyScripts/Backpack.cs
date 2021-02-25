@@ -15,7 +15,8 @@ public class Backpack : MonoBehaviour
     public Text goldLabel;
     public delegate void OnGoldChanged();
     public OnGoldChanged onGoldChangedCallback;
-    int count;
+    int firstStageCounter;
+    public int secondStageCounter;
     public GameObject winPanel;
     public GameObject losePanel;
 
@@ -38,11 +39,11 @@ public class Backpack : MonoBehaviour
             Inventory.instance.Add(new Item(200, "SR", "Potion"));
         }
 
-        if (count >= 3)
+        if (firstStageCounter >= 3)
         {
             firstStage.SetActive(false);
             secondStage.SetActive(true);
-            count = 0;
+            firstStageCounter = 0;
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -61,11 +62,12 @@ public class Backpack : MonoBehaviour
                 {
                     clickedObejct.GetComponent<PickUpItem>().PickUp();
                     Destroy(clickedObejct);
-                    count++;
+                    firstStageCounter++;
                 }
-                else if(clickedObejct.GetComponent<InventorySlot>() != null && secondStage.activeSelf)
+                else if(clickedObejct.GetComponent<InventorySlot>() != null && secondStage.activeSelf && secondStageCounter != 3)
                 {
                     clickedObejct.GetComponent<InventorySlot>().SendItem();
+                    secondStageCounter++;
                 }
                 else if (clickedObejct.GetComponent<CraftSlot>() != null && secondStage.activeSelf)
                 {
