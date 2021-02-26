@@ -19,7 +19,7 @@ namespace RunnerGame
         private bool goingLeft;
         private bool goingRight;
 
-        public float lerpDuration;
+        public static float lerpDuration;
         private float timeSpentLerping;
         private string lane = "middle";
         private string laneToLeft = "left";
