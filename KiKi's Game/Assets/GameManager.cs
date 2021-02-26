@@ -7,12 +7,18 @@ namespace RunnerGame
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager m_instance;
         public int score = 0;
         public Text scoreText;
+        [SerializeField]
+        private GameObject road_Prefab;
+        public static GameObject roadPrefab;
 
         // Start is called before the first frame update
         void Start()
         {
+            m_instance = this;
+            roadPrefab = road_Prefab;
             StartCoroutine(IncreaseScore());
             StartCoroutine(WearDownBike());
         }
