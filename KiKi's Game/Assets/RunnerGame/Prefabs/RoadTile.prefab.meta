@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: a8f85525cce3c6141bae3fbc60784c38
+=======
+<<<<<<< Updated upstream:KiKi's Game/Assets/Prefabs/Balance/Balance_Bird (1).prefab.meta
+guid: 09ece275643a4d9419e824f862d45e05
+=======
+guid: a8f85525cce3c6141bae3fbc60784c38
+>>>>>>> Stashed changes:KiKi's Game/Assets/RunnerGame/Prefabs/RoadTile.prefab.meta
+>>>>>>> Stashed changes
 PrefabImporter:
   externalObjects: {}
   userData: 
