@@ -20,10 +20,17 @@ public class proceduralBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        birdBuffer -= Time.deltaTime;
+        cloudBuffer -= Time.deltaTime;
         if(birdBuffer <= 0)
         {
-            Instantiate(birds[Random.Range(0, birds.Length)] ).GetComponent<BGObj>().speed = Random.Range(20f, 30f);
+            Instantiate(birds[Random.Range(0, birds.Length)], new Vector3(-8f, Random.Range(-yLimit, yLimit), 0), Quaternion.identity).GetComponent<BGObj>().speed = Random.Range(5f, 10f);
             birdBuffer = Random.Range(2f, 3f);
+        }
+        if (cloudBuffer <= 0)
+        {
+            Instantiate(clouds[Random.Range(0, clouds.Length)], new Vector3(-10f, Random.Range(-yLimit, yLimit), 0), Quaternion.identity).GetComponent<BGObj>().speed = Random.Range(2f, 5f);
+            cloudBuffer = Random.Range(4f, 7f);
         }
     }
 }

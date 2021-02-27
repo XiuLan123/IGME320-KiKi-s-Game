@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7030036598390121529}
   - component: {fileID: 4163020280513676452}
+  - component: {fileID: -6518812783767979085}
   m_Layer: 0
   m_Name: Balance_Cloud2
   m_TagString: Untagged
@@ -81,3 +82,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6518812783767979085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946961252928655344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0f17ec761f7b4d84b370bba7f8a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1

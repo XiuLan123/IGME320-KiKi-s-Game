@@ -43,11 +43,6 @@ public class GameController : MonoBehaviour
                 StartCoroutine(WaitForPress());
                 yield break;
             }
-
-            if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                gameplayUI.transform.GetChild(1).gameObject.SetActive(false);
-            }
             yield return null;
         }
 
@@ -68,6 +63,6 @@ public class GameController : MonoBehaviour
 
     public void ExitToMain()
     {
-        SceneManager.LoadScene(0);//0 or whatever the title scene index is
+        SceneManager.LoadScene(1);//0 or whatever the title scene index is
     }
 }

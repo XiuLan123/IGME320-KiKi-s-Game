@@ -36,7 +36,8 @@ public class HelpBtn : MonoBehaviour
 
     public void ExitToMain()
     {
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
     }
 
     public void QuitApp()

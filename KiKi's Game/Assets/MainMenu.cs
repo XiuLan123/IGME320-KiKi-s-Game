@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     GameObject[] miniGameChoices;
     [SerializeField]
     Transform origin;
+    public Collider2D player;
 
     private void Start()
     {
@@ -62,6 +63,13 @@ public class MainMenu : MonoBehaviour
         Bounds encounterBounds = miniGameChoices[0].GetComponent<Collider2D>().bounds;
 
         Vector3 result = new Vector3(Random.Range(x - width/2 + encounterBounds.size.x, x + width/2 - encounterBounds.size.x), Random.Range(y - height / 2 + encounterBounds.size.y, y + height / 2 - encounterBounds.size.y), 0);
+        encounterBounds.center = result;
+
+        while (player.bounds.Intersects(encounterBounds))
+        {
+            result = new Vector3(Random.Range(x - width / 2 + encounterBounds.size.x, x + width / 2 - encounterBounds.size.x), Random.Range(y - height / 2 + encounterBounds.size.y, y + height / 2 - encounterBounds.size.y), 0);
+            encounterBounds.center = result;
+        }
 
         return result;
     }

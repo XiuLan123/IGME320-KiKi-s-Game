@@ -52,7 +52,7 @@ public class Manager : MonoBehaviour
 
 
             //instantiate enemies
-            if (UnityEngine.Random.Range(0f, 100f) < .5)
+            if (UnityEngine.Random.Range(0f, 100f) < .5 && Time.timeScale > 0)
             {
                 InstantiateEnemy();
             }
@@ -81,6 +81,7 @@ public class Manager : MonoBehaviour
                 if(kiki.health > 0 && timer <= 0)
                 {
                     winScreen.SetActive(true);
+                    StartCoroutine(LoadMainWait(1f));
                 }
             }
 
@@ -111,7 +112,7 @@ public class Manager : MonoBehaviour
             delay -= Time.deltaTime;
             yield return null;
         }
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     /// <summary>
@@ -122,19 +123,19 @@ public class Manager : MonoBehaviour
         //input for wasd and arrow controls
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x, kiki.gameObject.transform.position.y + .05f);
+            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x, kiki.gameObject.transform.position.y + 5 * Time.deltaTime);
         }
         else if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x, kiki.gameObject.transform.position.y - .05f);
+            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x, kiki.gameObject.transform.position.y - 5 * Time.deltaTime);
         }
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x - .05f, kiki.gameObject.transform.position.y);
+            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x - 5 * Time.deltaTime, kiki.gameObject.transform.position.y);
         }
         else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x + .05f, kiki.gameObject.transform.position.y);
+            kiki.gameObject.transform.position = new Vector3(kiki.gameObject.transform.position.x + 5 * Time.deltaTime, kiki.gameObject.transform.position.y);
         }
 
 
@@ -182,7 +183,7 @@ public class Manager : MonoBehaviour
     /// <param name="enemy">Enemy to be moved</param>
     public void MoveEnemy(GameObject enemy)
     {
-        enemy.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y - .03f);
+        enemy.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y - 3 * Time.deltaTime);
     }
 
 
