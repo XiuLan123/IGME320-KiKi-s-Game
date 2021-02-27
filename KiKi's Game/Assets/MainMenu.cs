@@ -12,52 +12,38 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     Transform origin;
 
-    public GameObject introMessage;
-    public GameObject mainMessage;
-
     private void Start()
     {
-        encounterTimer = Random.Range(3f,6f);
+        encounterTimer = Random.Range(0f,2f);
     }
 
     private void Update()
     {
-        if (!introMessage.activeSelf)
+        if (encounterTimer <= 0)
         {
-            if (encounterTimer <= 0)
-            {
-                EncounterMinigame(Random.Range(0, 4), RandomPosOnScreen());
-                encounterTimer = Random.Range(3f, 6f);
-            }
-            else
-            {
-                encounterTimer -= Time.deltaTime;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                SceneManager.LoadScene(1);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                SceneManager.LoadScene(2);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                SceneManager.LoadScene(3);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                SceneManager.LoadScene(4);
-            }
+            EncounterMinigame(Random.Range(0, 4), RandomPosOnScreen());
+            encounterTimer = Random.Range(3f, 6f);
         }
         else
         {
-            if (Input.anyKeyDown)
-            {
-                introMessage.SetActive(false);
-                mainMessage.SetActive(true);
-            }
+            encounterTimer -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SceneManager.LoadScene(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SceneManager.LoadScene(4);
         }
     }
 
