@@ -22,8 +22,8 @@ public class proceduralBackground : MonoBehaviour
     {
         if(birdBuffer <= 0)
         {
-            Instantiate(birds[Random.Range(0, birds.Length)], ).GetComponent<BGObj>().speed = Random.Range(20f, 30f);
-            birdBuffer = Random.Range(2f, 3f,);
+            Instantiate(birds[Random.Range(0, birds.Length)]).GetComponent<BGObj>().speed = Random.Range(20f, 30f);
+            birdBuffer = Random.Range(2f, 3f);
         }
     }
 }
