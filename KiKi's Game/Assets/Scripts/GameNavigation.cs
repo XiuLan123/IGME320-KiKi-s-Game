@@ -22,6 +22,6 @@ public class GameNavigation : MonoBehaviour
 
     public static void GoToMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

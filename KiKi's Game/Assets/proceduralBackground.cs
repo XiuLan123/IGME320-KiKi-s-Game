@@ -7,8 +7,8 @@ public class proceduralBackground : MonoBehaviour
     public GameObject[] clouds;
     public GameObject[] birds;
 
-    float birdBuffer = 2f; //1s-4s
-    float cloudBuffer = 3f; //1s-4s
+    float birdBuffer = 5f;
+    float cloudBuffer = 6f;
 
     float yLimit = 3.5f;
     // Start is called before the first frame update

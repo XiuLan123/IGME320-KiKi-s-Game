@@ -12,6 +12,15 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     Transform origin;
     public Collider2D player;
+    public Camera introCam;
+    public Camera main;
+    public MenuController kiki;
+
+    private void Awake()
+    {
+        introCam.enabled = true;
+        main.enabled = false;
+    }
 
     private void Start()
     {
@@ -20,31 +29,42 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if (encounterTimer <= 0)
+        if (!introCam.enabled)
         {
-            EncounterMinigame(Random.Range(0, 4), RandomPosOnScreen());
-            encounterTimer = Random.Range(3f, 6f);
-        }
-        else
-        {
-            encounterTimer -= Time.deltaTime;
-        }
+            if (encounterTimer <= 0)
+            {
+                EncounterMinigame(Random.Range(0, 4), RandomPosOnScreen());
+                encounterTimer = Random.Range(3f, 6f);
+            }
+            else
+            {
+                encounterTimer -= Time.deltaTime;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SceneManager.LoadScene(1);
+            //if (Input.GetKeyDown(KeyCode.Alpha1))
+            //{
+            //    SceneManager.LoadScene(1);
+            //}
+            //if (Input.GetKeyDown(KeyCode.Alpha2))
+            //{
+            //    SceneManager.LoadScene(2);
+            //}
+            //if (Input.GetKeyDown(KeyCode.Alpha3))
+            //{
+            //    SceneManager.LoadScene(3);
+            //}
+            //if (Input.GetKeyDown(KeyCode.Alpha4))
+            //{
+            //    SceneManager.LoadScene(4);
+            //}
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if(introCam.transform.position.y  == -8.83f)
         {
-            SceneManager.LoadScene(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SceneManager.LoadScene(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SceneManager.LoadScene(4);
+            introCam.enabled = false;
+            main.enabled = true;
+            kiki.introDone = true;
+            introCam.gameObject.SetActive(false);
+            player.gameObject.SetActive(true);
         }
     }
 

@@ -5,6 +5,6 @@ public class ExitBttn : MonoBehaviour
 {
     public void QuitGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
