@@ -6,7 +6,7 @@ namespace RunnerGame
 {
     public class Advance : MonoBehaviour
     {
-        public static float speed = 0.05f;
+        public static float speed = 15f;
         // Start is called before the first frame update
         void Start()
         {
@@ -18,7 +18,7 @@ namespace RunnerGame
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x,
                                                         gameObject.transform.position.y,
-                                                        gameObject.transform.position.z - speed);
+                                                        gameObject.transform.position.z -  Time.deltaTime * speed);
             if (gameObject.transform.position.z < -5)
             {
                 SpawnCars.spawnedObjects.Remove(this.gameObject);
