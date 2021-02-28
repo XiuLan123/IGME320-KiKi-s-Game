@@ -9,7 +9,6 @@ public class GameController : MonoBehaviour
     public GameObject gameplayUI;
     public GameObject winScreenUI;
     public GameObject lossScreenUI;
-    public GameObject button;
     public GameObject gameplayObjects;
 
     public static bool packageDropped;
@@ -39,14 +38,10 @@ public class GameController : MonoBehaviour
             if (packageDropped)
             {
                 gameplayUI.SetActive(false);
-                button.SetActive(true);
                 lossScreenUI.SetActive(true);
                 gameplayObjects.SetActive(false);
+                StartCoroutine(WaitForPress());
                 yield break;
-            }
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                ExitToMain();
             }
             yield return null;
         }
@@ -54,11 +49,20 @@ public class GameController : MonoBehaviour
         gameplayObjects.SetActive(false);
         gameplayUI.SetActive(false);
         winScreenUI.SetActive(true);
-        button.SetActive(true);
+        StartCoroutine(WaitForPress());
+    }
+
+    IEnumerator WaitForPress()
+    {
+        while (!Input.anyKeyDown)
+        {
+            yield return null;
+        }
+        ExitToMain();
     }
 
     public void ExitToMain()
     {
-        SceneManager.LoadScene(0);//0 or whatever the title scene index is
+        SceneManager.LoadScene(1);//0 or whatever the title scene index is
     }
 }

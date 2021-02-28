@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RPotion
   m_EditorClassIdentifier: 
   name: RPotion
-  price: 150
+  price: 50
   rarity: R
   type: Potion
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

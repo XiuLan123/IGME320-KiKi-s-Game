@@ -15,10 +15,15 @@ public class Backpack : MonoBehaviour
     public Text goldLabel;
     public delegate void OnGoldChanged();
     public OnGoldChanged onGoldChangedCallback;
-    int count;
+    int firstStageCounter;
+    public int secondStageCounter;
+    public GameObject winPanel;
+    public GameObject losePanel;
 
     void Start()
     {
+        winPanel.SetActive(false);
+        losePanel.SetActive(false);
         onGoldChangedCallback += UpdateGold;
         UpdateGold();
     }
@@ -34,11 +39,11 @@ public class Backpack : MonoBehaviour
             Inventory.instance.Add(new Item(200, "SR", "Potion"));
         }
 
-        if (count >= 3)
+        if (firstStageCounter >= 3)
         {
             firstStage.SetActive(false);
             secondStage.SetActive(true);
-            count = 0;
+            firstStageCounter = 0;
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -57,11 +62,12 @@ public class Backpack : MonoBehaviour
                 {
                     clickedObejct.GetComponent<PickUpItem>().PickUp();
                     Destroy(clickedObejct);
-                    count++;
+                    firstStageCounter++;
                 }
-                else if(clickedObejct.GetComponent<InventorySlot>() != null && secondStage.activeSelf)
+                else if(clickedObejct.GetComponent<InventorySlot>() != null && secondStage.activeSelf && secondStageCounter != 3)
                 {
                     clickedObejct.GetComponent<InventorySlot>().SendItem();
+                    secondStageCounter++;
                 }
                 else if (clickedObejct.GetComponent<CraftSlot>() != null && secondStage.activeSelf)
                 {
@@ -76,7 +82,7 @@ public class Backpack : MonoBehaviour
                 {
                     if (ChangeGold(clickedObejct.GetComponent<PickUpItem>().item.price, false))
                     {
-                        clickedObejct.GetComponent<PickUpItem>().PickUp();
+                        clickedObejct.GetComponent<PickUpItem>().PickUp();            
                         Destroy(clickedObejct);
                     }
                 }
@@ -121,6 +127,6 @@ public class Backpack : MonoBehaviour
 
     public void UpdateGold()
     {
-        goldLabel.text = "Gold: " + gold.ToString();
+        goldLabel.text = ": " + gold.ToString();
     }
 }

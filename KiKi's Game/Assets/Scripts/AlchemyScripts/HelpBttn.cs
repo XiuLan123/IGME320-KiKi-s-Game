@@ -13,6 +13,8 @@ public class HelpBttn : MonoBehaviour
     public GameObject stageThree;
     public GameObject stageFour;
     public GameObject exitBttn;
+    public GameObject PriceBttn;
+    public GameObject pricePanel;
 
     public void Click()
     {
@@ -34,6 +36,7 @@ public class HelpBttn : MonoBehaviour
         else if (stageFour.activeSelf)
         {
             helpPanelFour.SetActive(true);
+            PriceBttn.SetActive(true);
         }
     }
 
@@ -44,5 +47,18 @@ public class HelpBttn : MonoBehaviour
         helpPanelThree.SetActive(false);
         helpPanelFour.SetActive(false);
         exitBttn.SetActive(false);
+        PriceBttn.SetActive(false);
+    }
+
+    public void PriceBttnClick()
+    {
+        if (pricePanel.activeSelf)
+        {
+            pricePanel.SetActive(false);
+        }
+        else
+        {
+            pricePanel.SetActive(true);
+        }
     }
 }

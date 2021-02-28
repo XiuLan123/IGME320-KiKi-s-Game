@@ -43,12 +43,16 @@ public class HUD : MonoBehaviour
             heart1.SetActive(false);
         }
 
-        if(manager.gameoverScreen.activeSelf && Input.anyKeyDown)
-        {
-            SceneManager.LoadScene(0);
-        }
+        //if(manager.gameoverScreen.activeSelf && Input.anyKeyDown)
+        //{
+        //    SceneManager.LoadScene(0);
+        //}
     }
 
+
+    /// <summary>
+    /// Checks if the player has started the game
+    /// </summary>
     public void CheckPlay()
     {
         if (Input.anyKeyDown)
@@ -57,6 +61,5 @@ public class HUD : MonoBehaviour
             play = true;
             manager.isPaused = false;
         }
-
     }
 }

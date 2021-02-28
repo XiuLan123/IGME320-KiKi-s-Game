@@ -16,5 +16,5 @@ MonoBehaviour:
   price: 15
   rarity: R
   type: Material
-  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  color: {r: 0.25355998, g: 0.39864627, b: 0.6981132, a: 1}
+  icon: {fileID: 21300000, guid: 5fa1ff94111ca7b4c9a87f0d43a0fece, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NPotion
   m_EditorClassIdentifier: 
   name: NPotion
-  price: 100
+  price: 20
   rarity: N
   type: Potion
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

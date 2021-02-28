@@ -11,19 +11,14 @@ public class ThirdStage : MonoBehaviour
     public GameObject questOneBttn;
     public GameObject questTwoBttn;
     public GameObject questThreeBttn;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    public GameObject winPanel;
 
     // Update is called once per frame
     void Update()
     {
         if (!questOneBttn.activeSelf && !questTwoBttn.activeSelf && !questThreeBttn.activeSelf)
         {
-            SceneManager.LoadScene(0);
+            winPanel.SetActive(true);
         }
     }
 
@@ -57,9 +52,9 @@ public class ThirdStage : MonoBehaviour
 
         if (removeOne != null && removeTwo != null && removeThree != null)
         {
-            Inventory.instance.items.Remove(removeOne);
-            Inventory.instance.items.Remove(removeTwo);
-            Inventory.instance.items.Remove(removeThree);
+            Inventory.instance.Remove(removeOne);
+            Inventory.instance.Remove(removeTwo);
+            Inventory.instance.Remove(removeThree);
             questOneBttn.SetActive(false);
         }
     }
@@ -72,7 +67,7 @@ public class ThirdStage : MonoBehaviour
         foreach (Item i in Inventory.instance.items)
         {
 
-            if (i.rarity == "N" && i.type == "Potion" && removeOne == null)
+            if (i.rarity == "R" && i.type == "Potion" && removeOne == null)
             {
                 removeOne = i;
             }
@@ -84,8 +79,8 @@ public class ThirdStage : MonoBehaviour
 
         if (removeOne != null && removeTwo != null)
         {
-            Inventory.instance.items.Remove(removeOne);
-            Inventory.instance.items.Remove(removeTwo);
+            Inventory.instance.Remove(removeOne);
+            Inventory.instance.Remove(removeTwo);
             questTwoBttn.SetActive(false);
         }
     }
@@ -105,7 +100,7 @@ public class ThirdStage : MonoBehaviour
 
         if (removeOne != null)
         {
-            Inventory.instance.items.Remove(removeOne);
+            Inventory.instance.Remove(removeOne);
             questThreeBttn.SetActive(false);
         }
     }

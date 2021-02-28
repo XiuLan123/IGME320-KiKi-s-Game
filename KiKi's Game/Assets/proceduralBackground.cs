@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class proceduralBackground : MonoBehaviour
+{
+    public GameObject[] clouds;
+    public GameObject[] birds;
+
+    float birdBuffer = 5f;
+    float cloudBuffer = 6f;
+
+    float yLimit = 3.5f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        birdBuffer -= Time.deltaTime;
+        cloudBuffer -= Time.deltaTime;
+        if(birdBuffer <= 0)
+        {
+            Instantiate(birds[Random.Range(0, birds.Length)], new Vector3(-8f, Random.Range(-yLimit, yLimit), 0), Quaternion.identity).GetComponent<BGObj>().speed = Random.Range(5f, 10f);
+            birdBuffer = Random.Range(2f, 3f);
+        }
+        if (cloudBuffer <= 0)
+        {
+            Instantiate(clouds[Random.Range(0, clouds.Length)], new Vector3(-10f, Random.Range(-yLimit, yLimit), 0), Quaternion.identity).GetComponent<BGObj>().speed = Random.Range(2f, 5f);
+            cloudBuffer = Random.Range(4f, 7f);
+        }
+    }
+}

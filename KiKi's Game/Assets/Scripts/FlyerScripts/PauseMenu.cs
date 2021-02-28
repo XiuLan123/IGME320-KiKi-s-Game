@@ -29,7 +29,7 @@ public class PauseMenu : MonoBehaviour
             pauseScreen.SetActive(false);
         }
 
-        if(manager.isPaused && Input.GetKeyDown(KeyCode.Escape))
+        if(pauseScreen.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
         }
