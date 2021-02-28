@@ -1326,7 +1326,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream
     - target: {fileID: 6145082947582061798, guid: 9ef684207a705014fb8b4d81611a8ff2,
+=======
+    - target: {fileID: 5503077348088465038, guid: b7cbccf5e3b6e5443b54342942a88093,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -62
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503077349674347675, guid: b7cbccf5e3b6e5443b54342942a88093,
+>>>>>>> Stashed changes
         type: 3}
       propertyPath: m_RootOrder
       value: 12
