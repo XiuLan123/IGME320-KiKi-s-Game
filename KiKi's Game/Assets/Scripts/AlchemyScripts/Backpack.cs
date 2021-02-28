@@ -50,7 +50,7 @@ public class Backpack : MonoBehaviour
                 clickedObejct = results[0].gameObject;
                 Debug.Log(clickedObejct);
 
-                if (clickedObejct.GetComponent<PickUpItem>() != null && firstStage.activeSelf)
+                if (clickedObejct.GetComponent<PickUpItem>() != null && firstStage.activeSelf && Inventory.instance.items.Count < Inventory.instance.space  )
                 {
                     clickedObejct.GetComponent<PickUpItem>().PickUp();
                     Destroy(clickedObejct);
@@ -79,10 +79,14 @@ public class Backpack : MonoBehaviour
                 }
                 else if (clickedObejct.GetComponent<PickUpItem>() != null && fourthStage.activeSelf)
                 {
-                    if (ChangeGold(clickedObejct.GetComponent<PickUpItem>().item.price, false))
+                    Debug.Log(Inventory.instance.items.Count);
+                    if (Inventory.instance.items.Count < Inventory.instance.space)
                     {
-                        clickedObejct.GetComponent<PickUpItem>().PickUp();            
-                        Destroy(clickedObejct);
+                        if (ChangeGold(clickedObejct.GetComponent<PickUpItem>().item.price, false))
+                        {
+                            clickedObejct.GetComponent<PickUpItem>().PickUp();
+                            Destroy(clickedObejct);
+                        }
                     }
                 }
                 else if (clickedObejct.GetComponent<InventorySlot>() != null && fourthStage.activeSelf)
