@@ -58,12 +58,19 @@ public class Backpack : MonoBehaviour
                 }
                 else if(clickedObejct.GetComponent<InventorySlot>() != null && secondStage.activeSelf && secondStageCounter != 3)
                 {
-                    clickedObejct.GetComponent<InventorySlot>().SendItem();
-                    secondStageCounter++;
+                    bool tf = clickedObejct.GetComponent<InventorySlot>().SendItem();
+                    if (tf)
+                    {
+                        secondStageCounter++;
+                    }
                 }
                 else if (clickedObejct.GetComponent<CraftSlot>() != null && secondStage.activeSelf)
                 {
-                    clickedObejct.GetComponent<CraftSlot>().SendItem();
+                    bool tf = clickedObejct.GetComponent<CraftSlot>().SendItem();
+                    if (tf)
+                    {
+                        secondStageCounter--;
+                    }
                 }
                 else if (clickedObejct.GetComponent<PickUpItem>() != null && secondStage.activeSelf)
                 {
@@ -80,8 +87,11 @@ public class Backpack : MonoBehaviour
                 }
                 else if (clickedObejct.GetComponent<InventorySlot>() != null && fourthStage.activeSelf)
                 {
-                    ChangeGold(clickedObejct.GetComponent<InventorySlot>().item.price, true);
-                    clickedObejct.GetComponent<InventorySlot>().RemoveItem();
+                    if(clickedObejct.GetComponent<InventorySlot>().item != null)
+                    {
+                        ChangeGold(clickedObejct.GetComponent<InventorySlot>().item.price, true);
+                        clickedObejct.GetComponent<InventorySlot>().RemoveItem();
+                    }
                 }
             }
         }

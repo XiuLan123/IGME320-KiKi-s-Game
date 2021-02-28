@@ -10,12 +10,15 @@ public class CraftSlot : MonoBehaviour
 
     public void AddItem(Item newItem)
     {
-        item = newItem;
+        if(newItem != null)
+        {
+            item = newItem;
 
-        icon.color = item.color;
+            icon.color = item.color;
 
-        icon.sprite = item.icon;
-        icon.enabled = true;
+            icon.sprite = item.icon;
+            icon.enabled = true;
+        }
     }
 
     public void ClearSlot()
@@ -28,9 +31,17 @@ public class CraftSlot : MonoBehaviour
         icon.enabled = false;
     }
 
-    public void SendItem()
+    public bool SendItem()
     {
-        Inventory.instance.Add(item);
-        Craft.instance.Remove(item);
+        if(item != null)
+        {
+            Inventory.instance.Add(item);
+            Craft.instance.Remove(item);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

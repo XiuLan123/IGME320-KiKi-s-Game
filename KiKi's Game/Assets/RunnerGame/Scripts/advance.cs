@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RunnerGame
 {
-    public class Advance : MonoBehaviour
+    public class advance : MonoBehaviour
     {
         public static float speed = 10f;
         private float augment = 0.0f;

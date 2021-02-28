@@ -48,7 +48,7 @@ namespace RunnerGame
             timeElapsedInLevel = 0.0f;
             level = 1;
             StartCoroutine(SpawnWave());
-            AvdSpd = Advance.speed;
+            AvdSpd = advance.speed;
 
             minWait = 0.5f;
             maxWait = 1.5f;
@@ -63,8 +63,8 @@ namespace RunnerGame
             if (timeElapsedInLevel > 10.0f)
             {
                 level++;
-                Advance.IncreaseSpeed(0.02f);
-                AvdSpd = Advance.speed;
+                advance.IncreaseSpeed(0.02f);
+                AvdSpd = advance.speed;
                 timeElapsedInLevel = 0;
 
                 minWait = minWait - 0.05f;

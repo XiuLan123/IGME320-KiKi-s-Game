@@ -10,12 +10,15 @@ public class InventorySlot : MonoBehaviour
 
     public void AddItem(Item newItem)
     {
-        item = newItem;
+        if (newItem != null)
+        {
+            item = newItem;
 
-        icon.color = item.color;
+            icon.color = item.color;
 
-        icon.sprite = item.icon;
-        icon.enabled = true;
+            icon.sprite = item.icon;
+            icon.enabled = true;
+        }
     }
 
     public void ClearSlot()
@@ -28,14 +31,25 @@ public class InventorySlot : MonoBehaviour
         icon.enabled = false;
     }
 
-    public void SendItem()
+    public bool SendItem()
     {
-        Craft.instance.Add(item);
-        Inventory.instance.Remove(item);
+        if (item != null)
+        {
+            Craft.instance.Add(item);
+            Inventory.instance.Remove(item);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void RemoveItem()
     {
-        Inventory.instance.Remove(item);
+        if(item != null)
+        {
+            Inventory.instance.Remove(item);
+        }
     }
 }
