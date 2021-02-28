@@ -13,6 +13,8 @@ namespace RunnerGame
         [SerializeField]
         private GameObject road_Prefab;
         public static GameObject roadPrefab;
+        public Image gameOverImage;
+        public static bool dead = false;
 
         // Start is called before the first frame update
         void Start()
@@ -26,7 +28,8 @@ namespace RunnerGame
         public void GameOver()
         {
             StopAllCoroutines();
-            GameNavigation.GoToMainMenu();
+            dead = true;
+            gameOverImage.gameObject.SetActive(true);
         }
 
         public IEnumerator IncreaseScore()

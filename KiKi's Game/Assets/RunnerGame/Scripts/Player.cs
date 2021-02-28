@@ -43,7 +43,7 @@ namespace RunnerGame
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Pickup")
+            if (other.tag == "Pickup" && !GameManager.dead)
             {
                 gm.AddScore(5);
                 TakeDamage(-5);
