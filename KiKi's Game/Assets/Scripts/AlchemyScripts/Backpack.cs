@@ -31,14 +31,6 @@ public class Backpack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //cheat
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Inventory.instance.Add(new Item(100, "N", "Potion"));
-            Inventory.instance.Add(new Item(150, "R", "Potion"));
-            Inventory.instance.Add(new Item(200, "SR", "Potion"));
-        }
-
         if (firstStageCounter >= 3)
         {
             firstStage.SetActive(false);

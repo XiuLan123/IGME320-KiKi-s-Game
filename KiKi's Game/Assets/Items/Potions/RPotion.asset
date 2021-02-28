@@ -16,5 +16,5 @@ MonoBehaviour:
   price: 50
   rarity: R
   type: Potion
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  color: {r: 0.25490198, g: 0.4, b: 0.69803923, a: 1}
+  icon: {fileID: 21300000, guid: b9be5306e5b91c64b872eb335181bec0, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
